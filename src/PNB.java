@@ -9,7 +9,9 @@ public class PNB {
         //Creating Variables
         Scanner input;
         String usersChoice;
-        String computersInput1;
+        String Pencil;
+        String Notebook;
+        String BookBag;
         String[] Object;
 
         //Initializing Variables
@@ -28,10 +30,9 @@ public class PNB {
                 "your option wisely!\n1 For Pencil\n2 For Notebook\n3 For Book Bag");
         usersChoice = input.nextLine();
         int usersObject = Integer.parseInt(usersChoice);
+        if(usersObject == 1) {
+            Pencil = 
         
-        //Debugging
-        System.out.println("\n"+Object[Generator]);
-
         //Results if user chooses Pencil
         if(usersObject == 1 && Object[Generator] == Object[0]) {
             System.out.println("\nTie!");
@@ -42,8 +43,8 @@ public class PNB {
         }
 
         //Results if user chooses Notebook
-        if(usersObject == 1 && Object[Generator] == Object[0]) {
-            System.out.println("\nTie!");
+        if(usersObject == 2 && Object[Generator] == Object[0]) {
+            System.out.println("You chose "+);
         } else if(usersObject == 1 && Object[Generator] == Object[1]){
             System.out.println("\nNotebook beats Pencil! Sorry feel free to play again.");
         } else if(usersObject == 1 && Object[Generator] == Object[2]){
