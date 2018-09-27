@@ -28,18 +28,11 @@ public class PNB {
                 "your option wisely!\n1 For Pencil\n2 For Notebook\n3 For Book Bag");
         usersChoice = input.nextLine();
         int usersObject = Integer.parseInt(usersChoice);
-        /*if(usersObject == 1) {
-            usersChoice = Object[0];
-        } else if(usersObject == 2) {
-            usersChoice = Object[1];
-        } else if(usersObject == 3) {
-            usersChoice = Object[2];
-        }*/
-
+        
         //Debugging
         System.out.println("\n"+Object[Generator]);
 
-        //Comparing users input with computers input
+        //Results if user chooses Pencil
         if(usersObject == 1 && Object[Generator] == Object[0]) {
             System.out.println("\nTie!");
         } else if(usersObject == 1 && Object[Generator] == Object[1]){
@@ -48,6 +41,24 @@ public class PNB {
             System.out.println("\nPencil beats Book Bag! Congrats feel free to play agin.");
         }
 
+        //Results if user chooses Notebook
+        if(usersObject == 1 && Object[Generator] == Object[0]) {
+            System.out.println("\nTie!");
+        } else if(usersObject == 1 && Object[Generator] == Object[1]){
+            System.out.println("\nNotebook beats Pencil! Sorry feel free to play again.");
+        } else if(usersObject == 1 && Object[Generator] == Object[2]){
+            System.out.println("\nPencil beats Book Bag! Congrats feel free to play agin.");
+        }
+        
+        //Results if user chooses Book Bag
+        if(usersObject == 1 && Object[Generator] == Object[0]) {
+            System.out.println("\nTie!");
+        } else if(usersObject == 1 && Object[Generator] == Object[1]){
+            System.out.println("\nNotebook beats Pencil! Sorry feel free to play again.");
+        } else if(usersObject == 1 && Object[Generator] == Object[2]){
+            System.out.println("\nPencil beats Book Bag! Congrats feel free to play agin.");
+        }
+        
         boolean Loop = true;
         while(Loop){
             System.out.println("Let's play again! You know the drill\n1 For Pencil\n2 For Notebook\n3 For Book Bag");
