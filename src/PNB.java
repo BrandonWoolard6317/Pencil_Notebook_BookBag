@@ -4,8 +4,6 @@ import java.util.Random;
 public class PNB {
     public static void main(String[]args){
 
-
-
         //Creating Variables
         Scanner input;
         String usersChoice;
@@ -14,11 +12,17 @@ public class PNB {
         int Generator;
         int loopGenerator;
         int usersObject;
+        int u;
+        int c;
+        int r;
 
         //Initializing Variables
         input = new Scanner(System.in);
         Random PNB = new Random();
         Generator = PNB.nextInt(3);
+        u = 0;
+        c = 0;
+        r = 1;
 
         //Array for PNB
         Object = new String[3];
@@ -27,10 +31,16 @@ public class PNB {
         Object[2] = "Book Bag";
 
         //Grabbing users choice of object
-        System.out.println("Let's play Pencil, Notebook, Book Bag! You'll be playing against the computer so select" +
-                "your option wisely!\n1 For Pencil\n2 For Notebook\n3 For Book Bag");
+        System.out.println("Let's play Pencil, Notebook, Book Bag! You'll be playing against the computer and \nwe'll play"+
+                " one round for practice! Choose on of the following.\n\n1 For Pencil\n2 For Notebook\n3 For Book Bag");
         usersChoice = input.nextLine();
         usersObject = Integer.parseInt(usersChoice);
+        if(usersObject <=0) {
+            System.out.println("Now you don't get to practice since you selected neither of the choices! Good luck.");
+        } else if(usersObject >= 4) {
+            System.out.println("Now you don't get to practice since you selected neither of the choices! Good luck.");
+        }
+
         if(usersObject == 1) {
             System.out.println("\nYou chose Pencil and the computer chose "+Object[Generator]);
         } else if(usersObject == 2) {
@@ -41,37 +51,51 @@ public class PNB {
         
         //Results if user chooses Pencil
         if(usersObject == 1 && Object[Generator] == Object[0]) {
-            System.out.println("\nTie! No one won feel free to play again.");
+            System.out.println("Tie! No one won the practice round.");
         } else if(usersObject == 1 && Object[Generator] == Object[1]){
-            System.out.println("\nNotebook beats Pencil! Sorry feel free to play again.");
+            System.out.println("Notebook beats Pencil! Sorry you lost the practice round.");
         } else if(usersObject == 1 && Object[Generator] == Object[2]){
-            System.out.println("\nPencil beats Book Bag! Congrats feel free to play again.");
+            System.out.println("Pencil beats Book Bag! Congrats you won the practice round.");
         }
 
         //Results if user chooses Notebook
         if(usersObject == 2 && Object[Generator] == Object[0]) {
-            System.out.println("\nNotebook beats Pencil! Congrats feel free to play again.");
+            System.out.println("Notebook beats Pencil! Congrats you won the practice round.");
         } else if(usersObject == 2 && Object[Generator] == Object[1]){
-            System.out.println("\nTie! No one won feel free to play again.");
+            System.out.println("Tie! No one won the practice round.");
         } else if(usersObject == 2 && Object[Generator] == Object[2]){
-            System.out.println("\nBook Bag beats Notebook! Sorry feel free to play again.");
+            System.out.println("Book Bag beats Notebook! Sorry you lost the practice round.");
         }
         
         //Results if user chooses Book Bag
         if(usersObject == 3 && Object[Generator] == Object[0]) {
-            System.out.println("\nPencil beats Book Bag! Sorry feel free to play again");
+            System.out.println("Pencil beats Book Bag! Sorry you lost the practice round.");
         } else if(usersObject == 3 && Object[Generator] == Object[1]){
-            System.out.println("\nBook Bag beats Notebook! Congrats feel free to play again.");
+            System.out.println("Book Bag beats Notebook! Congrats you won the practice round.");
         } else if(usersObject == 3 && Object[Generator] == Object[2]){
-            System.out.println("\nTie! No one won feel free to play again.");
+            System.out.println("Tie! No one won the practice round.");
         }
-        
+
+        System.out.println("Ok you'll be playing for real from now on so choose carefully! This will go up to 15 rounds " +
+                "whoever has the most points wins the entire game");
+
         boolean Loop = true;
         while(Loop){
             loopGenerator = PNB.nextInt(3);
-            System.out.println("\nYou know the drill\n1 For Pencil\n2 For Notebook\n3 For Book Bag");
+            System.out.println("1 For Pencil\n2 For Notebook\n3 For Book Bag");
             usersChoice = input.nextLine();
             usersObject = Integer.parseInt(usersChoice);
+            r++;
+            if(r == 16) {
+                System.out.println("The game is over!");
+                if (u > c) {
+                    System.out.println("You won the game congratulations! Feel free to play again.");
+                    System.exit(0);
+                } else if(u < c) {
+                    System.out.println("Sorry the computer won the game! Feel free to play again.");
+                    System.exit(0);
+                }
+            }
             if(usersObject == 1) {
                 System.out.println("\nYou chose Pencil and the computer chose "+Object[loopGenerator]);
             } else if(usersObject == 2) {
@@ -80,33 +104,51 @@ public class PNB {
                 System.out.println("\nYou chose Book Bag and the computer chose "+Object[loopGenerator]);
             }
 
+            //Results if user chooses a different option
+            if(usersObject <= 0) {
+                System.out.println("Since you didn't select a correct response, that round didn't count.");
+                r--;
+            } else if(usersObject >=4) {
+                System.out.println("Since you didn't select a correct response, that round didn't count.");
+                r--;
+            }
+
             //Results if user chooses Pencil
             if(usersObject == 1 && Object[loopGenerator] == Object[0]) {
-                System.out.println("\nTie! No one won feel free to play again.");
+                System.out.println("Tie!");
+                r--;
             } else if(usersObject == 1 && Object[loopGenerator] == Object[1]){
-                System.out.println("\nNotebook beats Pencil! Sorry feel free to play again.");
+                System.out.println("Notebook beats Pencil!");
+                c++;
             } else if(usersObject == 1 && Object[loopGenerator] == Object[2]){
-                System.out.println("\nPencil beats Book Bag! Congrats feel free to play again.");
+                System.out.println("Pencil beats Book Bag!");
+                u++;
             }
 
             //Results if user chooses Notebook
             if(usersObject == 2 && Object[loopGenerator] == Object[0]) {
-                System.out.println("\nNotebook beats Pencil! Congrats feel free to play again.");
+                System.out.println("Notebook beats Pencil!");
+                u++;
             } else if(usersObject == 2 && Object[loopGenerator] == Object[1]){
-                System.out.println("\nTie! No one won feel free to play again.");
+                System.out.println("Tie!");
+                r--;
             } else if(usersObject == 2 && Object[loopGenerator] == Object[2]){
-                System.out.println("\nBook Bag beats Notebook! Sorry feel free to play again.");
+                System.out.println("Book Bag beats Notebook!");
+                c++;
             }
 
             //Results if user chooses Book Bag
             if(usersObject == 3 && Object[loopGenerator] == Object[0]) {
-                System.out.println("\nPencil beats Book Bag! Sorry feel free to play again");
+                System.out.println("Pencil beats Book Bag!");
+                c++;
             } else if(usersObject == 3 && Object[loopGenerator] == Object[1]){
-                System.out.println("\nBook Bag beats Notebook! Congrats feel free to play again.");
+                System.out.println("Book Bag beats Notebook!");
+                u++;
             } else if(usersObject == 3 && Object[loopGenerator] == Object[2]){
-                System.out.println("\nTie! No one won feel free to play again.");
+                System.out.println("Tie!");
+                r--;
             }
+            System.out.println("Round: "+r+"\nScoreboard\nUser: "+u+"\nComputer: "+c);
         }
-
     }
 }
