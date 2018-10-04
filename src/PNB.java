@@ -32,7 +32,7 @@ public class PNB {
 
         //Grabbing users choice of object
         System.out.println("Let's play Pencil, Notebook, Book Bag! You'll be playing against the computer and \nwe'll play"+
-                " one round for practice! Choose on of the following.\n\n1 For Pencil\n2 For Notebook\n3 For Book Bag");
+                " one round for practice! Choose one of the following.\n\n1 For Pencil\n2 For Notebook\n3 For Book Bag");
         usersChoice = input.nextLine();
         usersObject = Integer.parseInt(usersChoice);
         if(usersObject <=0) {
@@ -77,7 +77,7 @@ public class PNB {
         }
 
         System.out.println("Ok you'll be playing for real from now on so choose carefully! This will go up to 15 rounds " +
-                "whoever has the most points wins the entire game");
+                "whoever has the most points wins the entire game.");
 
         boolean Loop = true;
         while(Loop){
@@ -89,10 +89,12 @@ public class PNB {
             if(r == 16) {
                 System.out.println("The game is over!");
                 if (u > c) {
-                    System.out.println("You won the game congratulations! Feel free to play again.");
+                    System.out.println("Congrats you won the game! You had "+(u-c)+"more " +
+                            "points than the computer. Feel free to play again.");
                     System.exit(0);
                 } else if(u < c) {
-                    System.out.println("Sorry the computer won the game! Feel free to play again.");
+                    System.out.println("Sorry the computer won the game! The computer had "+(c-u)+"more " +
+                            "points. Feel free to play again.");
                     System.exit(0);
                 }
             }
@@ -148,7 +150,21 @@ public class PNB {
                 System.out.println("Tie!");
                 r--;
             }
-            System.out.println("Round: "+r+"\nScoreboard\nUser: "+u+"\nComputer: "+c);
+            if(u > 1 && c > 1){
+                System.out.println("Round: " + r + "\nUser: " + u + " points" + "\nComputer: " + c + " points");
+            } else if(u == 1 && c == 1){
+                System.out.println("Round: " + r + "\nUser: " + u + " point" + "\nComputer: " + c + " point");
+            } else if(u > 1 && c == 1){
+                System.out.println("Round: " + r + "\nUser: " + u + " points" + "\nComputer: " + c + " point");
+            } else if(u == 1 && c > 1){
+                System.out.println("Round: " + r + "\nUser: " + u + " point" + "\nComputer: " + c + " points");
+            } else if(u == 0 && c == 0){
+                System.out.println("Round: " + r + "\nUser: " + u + " points" + "\nComputer: " + c + " points");
+            } else if(u < 1 && c == 0){
+                System.out.println("Round: " + r + "\nUser: " + u + " point" + "\nComputer: " + c + " points");
+            } else if(u == 0 && c < 1){
+                System.out.println("Round: " + r + "\nUser: " + u + " points" + "\nComputer: " + c + " point");
+            }
         }
     }
 }
