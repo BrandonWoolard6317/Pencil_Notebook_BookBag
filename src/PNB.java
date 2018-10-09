@@ -12,17 +12,18 @@ public class PNB {
         int Generator;
         int loopGenerator;
         int usersObject;
-        int u;
-        int c;
-        int r;
+        int yesOrNo;
+        int u = 0;
+        int c = 0;
+        int r = 1;
+        int g = 1;
+        int uw = 0;
+        int cw = 0;
 
         //Initializing Variables
         input = new Scanner(System.in);
         Random PNB = new Random();
         Generator = PNB.nextInt(3);
-        u = 0;
-        c = 0;
-        r = 1;
 
         //Array for PNB
         Object = new String[3];
@@ -77,7 +78,7 @@ public class PNB {
         }
 
         System.out.println("Ok you'll be playing for real from now on so choose carefully! The first to score 8 points" +
-                "will win the game.");
+                " will win the game.");
 
         boolean Loop = true;
         while(Loop){
@@ -159,25 +160,47 @@ public class PNB {
                 System.out.println("Round: " + r + "\nUser: " + u + " points" + "\nComputer: " + c + " points");
             }
             if(u == 8) {
+                uw++;
                 System.out.println("The game is over!");
                 if((u-c) == 1){
                     System.out.println("Congrats you won the game! You had " + (u - c) + " more " +
-                            "point than the computer and you won in round " + (r--) + ". Feel free to play again.");
+                            "point than the computer and you won in round " + (r--) + ". Do you want to play again?");
                 } else{
                     System.out.println("Congrats you won the game! You had " + (u - c) + " more " +
-                            "points than the computer and you won in round " + (r--) + ". Feel free to play again.");
+                            "points than the computer and you won in round " + (r--) + ". Do you want to play again?");
                 }
-                System.exit(0);
+
             } else if(c == 8){
+                cw++;
                 System.out.println("The game is over!");
                 if((c-u) == 1){
                     System.out.println("Sorry the computer won the game! It had " + (c - u) + " more " +
-                            "point than you and won in round " + (r--) + ". Feel free to play again.");
+                            "point than you and won in round " + (r--) + ". Do you want to play again?");
                 } else{
                     System.out.println("Sorry the computer won the game! It had " + (c - u) + " more " +
-                            "points than you and won in round " + (r--) + ". Feel free to play again.");
+                            "points than you and won in round " + (r--) + ". Do you want to play again?");
                 }
-                System.exit(0);
+            }
+            if(u == 8 || c == 8) {
+                System.out.println("\n1 Yes\n2 No");
+                usersChoice = input.nextLine();
+                yesOrNo = Integer.parseInt(usersChoice);
+                if (yesOrNo == 1) {
+                    g++;
+                    u = 0;
+                    c = 0;
+                    r = 1;
+                    System.out.println("Ok, good luck!\nGame: "+g+"\nUser Wins: "+uw+"\nComputer Wins: "+cw);
+                } else if (yesOrNo == 2) {
+                    if(cw == 1) {
+                        System.out.println("Thanks for playing! You played a total of " + g + " games and won " + uw + " of those" +
+                                " while the computer won " + cw + " game.");
+                    } else if(cw == 0 || cw > 1){
+                        System.out.println("Thanks for playing! You played a total of " + g + " games and won " + uw + " of those" +
+                                " while the computer won " + cw + " games.");
+                    }
+                    System.exit(0);
+                }
             }
         }
     }
